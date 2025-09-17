@@ -13,15 +13,21 @@ os.environ["AZURE_OPENAI_ENDPOINT"] = AZURE_OPENAI_ENDPOINT
 os.environ["AZURE_OPENAI_API_KEY"] = AZURE_OPENAI_KEY   
 
 
-llm = AzureChatOpenAI(
-    azure_deployment="ict-agent_gpt4omini",  
-    api_version="2024-12-01-preview", 
-    temperature=0.3,
-    max_tokens=100,
-    timeout=None,
-    max_retries=2,
-)
+try:
 
+    llm = AzureChatOpenAI(
+        azure_deployment="ict-agent_gpt4omini",  
+        api_version="2024-12-01-preview", 
+        temperature=0.3,
+        max_tokens=100,
+        timeout=None,
+        max_retries=2,
+    )
+    print(f"Language model initialized")
+    
+except Exception as e:
+    print(f"Error initializing language model: {e}")
+    llm = None
 
 
 

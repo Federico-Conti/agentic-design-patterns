@@ -1,3 +1,4 @@
 start.sh
 .env
 .venv
+__pycache__
